@@ -5,21 +5,18 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
-import net.mickilous.foobarqix.transformers.DivisionTransformer;
-import net.mickilous.foobarqix.transformers.OccurencesTransformer;
 import net.mickilous.foobarqix.transformers.Transformer;
 
 public class LinesProcessor {
 
-	public static final int		MAX_NUMBER		= 100;
+	public static final int		MAX_NUMBER	= 100;
 	private PrintStream			out;
-	private List<Transformer>	transformers	= Arrays.asList(new DivisionTransformer(), new OccurencesTransformer());
+	private List<Transformer>	transformers;
 
 	public void printLines() {
 		for (int i = 1; i <= MAX_NUMBER; i++) {
 			out.println(transform(i));
 		}
-
 	}
 
 	public String transform(int i) {
@@ -40,8 +37,8 @@ public class LinesProcessor {
 		this.out = new PrintStream(out);
 	}
 
-	public void setTransformers(List<Transformer> transformers) {
-		this.transformers = transformers;
+	public void setTransformers(Transformer... transformer) {
+		this.transformers = Arrays.asList(transformer);
 	}
 
 }

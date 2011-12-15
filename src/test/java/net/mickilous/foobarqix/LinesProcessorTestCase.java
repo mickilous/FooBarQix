@@ -3,7 +3,6 @@ package net.mickilous.foobarqix;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Arrays;
 
 import net.mickilous.foobarqix.transformers.Transformer;
 
@@ -11,7 +10,7 @@ import org.junit.Test;
 
 public class LinesProcessorTestCase {
 
-	LinesProcessor	lp	= new LinesProcessor();
+	LinesProcessor	lp	= new Application().linesProcessor();
 
 	@Test
 	public void testTransform_with_1() {
@@ -89,7 +88,7 @@ public class LinesProcessorTestCase {
 			}
 		};
 		lp.setOut(out);
-		lp.setTransformers(Arrays.asList(noTransfo));
+		lp.setTransformers(noTransfo);
 
 		lp.printLines();
 
