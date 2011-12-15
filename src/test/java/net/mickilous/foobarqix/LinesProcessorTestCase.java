@@ -13,18 +13,25 @@ public class LinesProcessorTestCase {
 	LinesProcessor	lp	= new Application().linesProcessor();
 
 	@Test
-	public void testTransform_with_1() {
+	public void testTransform_with_regular_numbers() {
 		assertThatNumber(1).isNotTransformed();
+		assertThatNumber(2).isNotTransformed();
+		assertThatNumber(4).isNotTransformed();
+		assertThatNumber(11).isNotTransformed();
 	}
 
 	@Test
 	public void testTransform_with_3() {
 		assertThatNumber(3).isTransformedIn("FooFoo");
+		assertThatNumber(9).isTransformedIn("Foo");
+		assertThatNumber(13).isTransformedIn("Foo");
+		assertThatNumber(33).isTransformedIn("FooFooFoo");
 	}
 
 	@Test
 	public void testTransform_with_5() {
 		assertThatNumber(5).isTransformedIn("BarBar");
+		assertThatNumber(10).isTransformedIn("Bar");
 	}
 
 	@Test
@@ -33,47 +40,11 @@ public class LinesProcessorTestCase {
 	}
 
 	@Test
-	public void testTransform_with_9() {
-		assertThatNumber(9).isTransformedIn("Foo");
-	}
-
-	@Test
-	public void testTransform_with_10() {
-		assertThatNumber(10).isTransformedIn("Bar");
-	}
-
-	@Test
-	public void testTransform_with_51() {
+	public void testTransform_with_combined_3_5_7() {
 		assertThatNumber(51).isTransformedIn("FooBar");
-	}
-
-	@Test
-	public void testTransform_with_53() {
 		assertThatNumber(53).isTransformedIn("BarFoo");
-	}
-
-	@Test
-	public void testTransform_with_21() {
 		assertThatNumber(21).isTransformedIn("FooQix");
-	}
-
-	@Test
-	public void testTransform_with_13() {
-		assertThatNumber(13).isTransformedIn("Foo");
-	}
-
-	@Test
-	public void testTransform_with_15() {
 		assertThatNumber(15).isTransformedIn("FooBarBar");
-	}
-
-	@Test
-	public void testTransform_with_33() {
-		assertThatNumber(33).isTransformedIn("FooFooFoo");
-	}
-
-	@Test
-	public void testTransform_with_35() {
 		assertThatNumber(35).isTransformedIn("BarQixFooBar");
 	}
 
