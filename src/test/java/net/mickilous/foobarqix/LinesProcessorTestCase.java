@@ -77,6 +77,7 @@ public class LinesProcessorTestCase {
 
 	@Test
 	public void testPrintLines() {
+
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		lp.setOut(out);
 
@@ -89,6 +90,7 @@ public class LinesProcessorTestCase {
 	}
 
 	private void assertTransform(int number, String expected) {
+
 		String actual = lp.transform(number);
 		assertEquals(expected, actual);
 
