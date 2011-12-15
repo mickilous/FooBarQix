@@ -36,4 +36,8 @@ public class LinesProcessor {
 		this.out = new PrintStream(out);
 	}
 
+	public void setTransformers(List<Transformer> transformers) {
+		this.transformers = transformers;
+	}
+
 }

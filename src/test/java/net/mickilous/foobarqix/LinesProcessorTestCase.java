@@ -3,6 +3,7 @@ package net.mickilous.foobarqix;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -79,13 +80,23 @@ public class LinesProcessorTestCase {
 	public void testPrintLines() {
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		Transformer noTransfo = new Transformer() {
+			@Override
+			public String transform(int number) {
+				return String.valueOf(number);
+			}
+		};
 		lp.setOut(out);
+		lp.setTransformers(Arrays.asList(noTransfo));
 
 		lp.printLines();
 
 		String[] lines = new String(out.toByteArray()).split(System.getProperty("line.separator"));
-
 		assertEquals(LinesProcessor.MAX_NUMBER, lines.length);
+		int i = 0;
+		for (String line : lines) {
+			assertEquals(String.valueOf(++i), line);
+		}
 
 	}
 
