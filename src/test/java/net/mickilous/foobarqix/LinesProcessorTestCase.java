@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 
+import net.mickilous.foobarqix.transformers.Transformer;
+
 import org.junit.Test;
 
 public class LinesProcessorTestCase {

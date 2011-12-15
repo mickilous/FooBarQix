@@ -1,4 +1,4 @@
-package net.mickilous.foobarqix;
+package net.mickilous.foobarqix.transformers;
 
 public interface Transformer {
 

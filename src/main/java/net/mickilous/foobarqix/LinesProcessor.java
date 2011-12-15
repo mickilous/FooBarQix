@@ -5,6 +5,10 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
+import net.mickilous.foobarqix.transformers.DivisionTransformer;
+import net.mickilous.foobarqix.transformers.OccurencesTransformer;
+import net.mickilous.foobarqix.transformers.Transformer;
+
 public class LinesProcessor {
 
 	public static final int		MAX_NUMBER		= 100;

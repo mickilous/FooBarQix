@@ -1,17 +1,14 @@
-package net.mickilous.foobarqix;
+package net.mickilous.foobarqix.transformers;
 
 public class DivisionTransformer implements Transformer {
 
 	@Override
 	public String transform(int number) {
 		StringBuffer sb = new StringBuffer();
-		if (number % 3 == 0)
-			sb.append("Foo");
-		if (number % 5 == 0)
-			sb.append("Bar");
-		if (number % 7 == 0)
-			sb.append("Qix");
-
+		for (DigitEnum digit : DigitEnum.values()) {
+			if (number % digit.getValue() == 0)
+				sb.append(digit.getLabel());
+		}
 		return sb.toString();
 	}
 
