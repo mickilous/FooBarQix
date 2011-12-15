@@ -14,67 +14,67 @@ public class LinesProcessorTestCase {
 
 	@Test
 	public void testTransform_with_1() {
-		assertTransform(1, "1");
+		assertThatNumber(1).isNotTransformed();
 	}
 
 	@Test
 	public void testTransform_with_3() {
-		assertTransform(3, "FooFoo");
+		assertThatNumber(3).isTransformedIn("FooFoo");
 	}
 
 	@Test
 	public void testTransform_with_5() {
-		assertTransform(5, "BarBar");
+		assertThatNumber(5).isTransformedIn("BarBar");
 	}
 
 	@Test
 	public void testTransform_with_7() {
-		assertTransform(7, "QixQix");
+		assertThatNumber(7).isTransformedIn("QixQix");
 	}
 
 	@Test
 	public void testTransform_with_9() {
-		assertTransform(9, "Foo");
+		assertThatNumber(9).isTransformedIn("Foo");
 	}
 
 	@Test
 	public void testTransform_with_10() {
-		assertTransform(10, "Bar");
+		assertThatNumber(10).isTransformedIn("Bar");
 	}
 
 	@Test
 	public void testTransform_with_51() {
-		assertTransform(51, "FooBar");
+		assertThatNumber(51).isTransformedIn("FooBar");
 	}
 
 	@Test
 	public void testTransform_with_53() {
-		assertTransform(53, "BarFoo");
+		assertThatNumber(53).isTransformedIn("BarFoo");
 	}
 
 	@Test
 	public void testTransform_with_21() {
-		assertTransform(21, "FooQix");
+		assertThatNumber(21).isTransformedIn("FooQix");
 	}
 
 	@Test
 	public void testTransform_with_13() {
-		assertTransform(13, "Foo");
+		assertThatNumber(13).isTransformedIn("Foo");
 	}
 
 	@Test
 	public void testTransform_with_15() {
-		assertTransform(15, "FooBarBar");
+		assertThatNumber(15).isTransformedIn("FooBarBar");
 	}
 
 	@Test
 	public void testTransform_with_33() {
-		assertTransform(33, "FooFooFoo");
+		assertThatNumber(33).isTransformedIn("FooFooFoo");
 	}
 
 	@Test
 	public void testTransform_with_35() {
-		assertTransform(35, "BarQixFooBar");
+		assertThatNumber(35).isTransformedIn("BarQixFooBar");
 	}
 
 	@Test
@@ -101,10 +101,26 @@ public class LinesProcessorTestCase {
 
 	}
 
-	private void assertTransform(int number, String expected) {
+	private AssertBuilder assertThatNumber(int number) {
+		return new AssertBuilder(number);
+	}
 
-		String actual = lp.transform(number);
-		assertEquals(expected, actual);
+	private class AssertBuilder {
+		int	number;
+
+		private AssertBuilder(int number) {
+			this.number = number;
+		}
+
+		void isTransformedIn(String expected) {
+			String actual = lp.transform(number);
+			assertEquals(expected, actual);
+		}
+
+		void isNotTransformed() {
+			String actual = lp.transform(number);
+			assertEquals(String.valueOf(actual), actual);
+		}
 
 	}
 
