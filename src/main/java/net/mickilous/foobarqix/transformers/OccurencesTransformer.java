@@ -6,9 +6,11 @@ public class OccurencesTransformer implements Transformer {
 	public String transform(int number) {
 		StringBuffer sb = new StringBuffer();
 		char[] digits = String.valueOf(number).toCharArray();
+
 		for (char digit : digits) {
 			sb.append(transform(digit));
 		}
+
 		return sb.toString();
 	}
 

@@ -12,7 +12,7 @@ public class Application {
 
 	public LinesProcessor linesProcessor() {
 		LinesProcessor lp = new LinesProcessor();
-		lp.setOut(System.out);
+		lp.setOutputStream(System.out);
 		lp.setTransformers(divisionTransformer(), occurencesTransformer());
 		return lp;
 	}

@@ -15,11 +15,11 @@ public class LinesProcessor {
 
 	public void printLines() {
 		for (int i = 1; i <= MAX_NUMBER; i++) {
-			out.println(transform(i));
+			out.println(transformLine(i));
 		}
 	}
 
-	public String transform(int i) {
+	public String transformLine(int i) {
 
 		StringBuffer sb = new StringBuffer();
 
@@ -33,7 +33,7 @@ public class LinesProcessor {
 
 	}
 
-	public void setOut(OutputStream out) {
+	public void setOutputStream(OutputStream out) {
 		this.out = new PrintStream(out);
 	}
 
