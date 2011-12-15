@@ -21,7 +21,7 @@ public class Application {
 		return new DivisionTransformer();
 	}
 
-	private Transformer occurencesTransformer() {
+	public Transformer occurencesTransformer() {
 		return new OccurencesTransformer();
 	}
 

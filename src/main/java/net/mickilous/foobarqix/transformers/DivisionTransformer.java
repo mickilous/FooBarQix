@@ -6,10 +6,14 @@ public class DivisionTransformer implements Transformer {
 	public String transform(int number) {
 		StringBuffer sb = new StringBuffer();
 		for (DigitEnum digit : DigitEnum.values()) {
-			if (number % digit.getValue() == 0)
+			if (isDividable(number, digit.getValue()))
 				sb.append(digit.getLabel());
 		}
 		return sb.toString();
+	}
+
+	private boolean isDividable(int number, int value) {
+		return number % value == 0;
 	}
 
 }
