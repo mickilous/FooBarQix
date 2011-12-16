@@ -6,11 +6,17 @@ import java.io.ByteArrayOutputStream;
 
 import net.mickilous.foobarqix.transformers.Transformer;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class LinesProcessorTestCase {
 
-	LinesProcessor	lp	= new Application().linesProcessor();
+	private LinesProcessor	lp;
+
+	@Before
+	public void before() {
+		lp = new Application().linesProcessor();
+	}
 
 	@Test
 	public void testTransform_with_regular_numbers() {
@@ -49,7 +55,7 @@ public class LinesProcessorTestCase {
 	}
 
 	@Test
-	public void testPrintLines() {
+	public void testPrintLines_with_stubed_transformer() {
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		Transformer noTransfo = new Transformer() {
@@ -58,7 +64,7 @@ public class LinesProcessorTestCase {
 				return String.valueOf(number);
 			}
 		};
-		lp.setOut(out);
+		lp.setOutputStream(out);
 		lp.setTransformers(noTransfo);
 
 		lp.printLines();
@@ -84,12 +90,12 @@ public class LinesProcessorTestCase {
 		}
 
 		void isTransformedIn(String expected) {
-			String actual = lp.transform(number);
+			String actual = lp.transformLine(number);
 			assertEquals(expected, actual);
 		}
 
 		void isNotTransformed() {
-			String actual = lp.transform(number);
+			String actual = lp.transformLine(number);
 			assertEquals(String.valueOf(actual), actual);
 		}
 
